@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-lg-12" >
+            <h1 class="page-header text-center">All your bookings in one place 
+                <small>can't wait to see you</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><%= link_to 'Home', root_path %>
+                </li>
+                <li class="active">Bookings for <%= current_user.name %></li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div style="margin-left:5%">
+        
+        
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Zone</th>                
+                <th>Arrival Date</th>
+                <th>Time Slot</th> 
+                <th>Price in €</th>
+                <th>Add Ons</th>
+                <% if current_user.try(:admin?) %>
+                    <th>User Number</th>
+                <% end %>  
+                <th>Edit</th>
+                <th>Remove</th>
+            </tr>
+          	<% for booking in Booking.all.order("date ASC") %>
+	            <% for zone in Zone.all %>
+	                <tr>
+	                    <% if (booking.user_id == current_user.id || current_user.try(:admin?)) %>
+		                    <td><strong><%= zone.name %></strong></td>
+		                    <td><%= booking.date %></td>
+		                    <td><%= booking.timeslot %></td>	                    
+	                        <td><%= booking.price %></td>
+	                        <td><%= booking.add_on %></td>
+	                    <% end %>
+	                    <% if current_user.try(:admin?) %>
+	                        <td><%= booking.user_id %></td>
+	                    <% end %>
+	                    
+	                    <% if (booking.user_id == current_user.id || current_user.try(:admin?)) && booking.date >= Date.today %>
+	                        <td><%= link_to ' Edit ', edit_zone_booking_path(Zone.all, booking), :class => 'btn btn-warning' %></td> 
+	                        <td><%= link_to ' Remove ', zone_booking_path(Zone.all, booking), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+	                    <% end %>
+	                </tr>
+	            <% end %>
+	        <% end %>    
+        </table>        
+    
+    </div>
+    <br><br>
+    <ol class="breadcrumb">
+        <li><%= link_to 'Home', root_path %>
+    </ol>
+</div>

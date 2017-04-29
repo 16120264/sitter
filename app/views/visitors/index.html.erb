@@ -1,0 +1,139 @@
+<!-- Header Carousel -->
+<header id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <div class="fill" style="background-image:url('https://www.ccpgames.com/4iarfuccmw16/6l8Nbr9fNKoyW0YUksuyAu/2e7d17fd8e8923f9c1d4a38de897127a/HighresScreenshot000038f97.jpg?fit=fill&w=1920');"></div>
+            <div class="carousel-caption">
+                <h2>Space Zone</h2>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://www.jurassicworlduniverse.com/wordpress/wp-content/uploads/2014/11/still006.jpg');"></div>
+            <div class="carousel-caption">
+                <h2>Jurassic Zone</h2>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('http://www.automobilesreview.com/gallery/bmw-vision-gran-turismo/bmw-vision-gran-turismo-01.jpg');"></div>
+            <div class="carousel-caption">
+                <h2>Adrenaline Zone</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Marketing Icons Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header text-center">
+                <strong>TYROS</strong> The Virtual Reality Arcade of your Dreams
+            </h1>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4><i class="fa fa-fw fa-fax text-center"></i> Jurassic Zone</h4>
+                </div>
+                <div class="panel-body">
+                    <p>Have you ever wanted to meet Dinosaurs in real life? Experience the ultimate dino ride with Jurassic Virtual 
+                    Reality (VR)</p>
+                    <p>This is your chance to have the ultimate Jurassic experience without the long flights or the time travel.</p>
+                    <p> Learn more about the history of dinosaurs and stand in awe as you explore a rich virtual reality world filled 
+                    with insidious 3d details. Explore the island’s Jurassic shores and dense jungle and learn about this chapter in 
+                    history. Safely observe the deadly creatures as they prowl their natural habitat. Hunt for your favourite creature 
+                    on the vast plains and secluded mountain ranges. The app includes many breed of dinosaurs; from hunting carnivores 
+                    like the towering T-Rex to smaller mini specimens such as the Dilophosaurus.</p>
+                    <% if user_signed_in? %>
+                        <a href="zones/3/bookings" class="btn btn-primary">Book Now</a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4><i class="fa fa-fw fa-car text-center"></i> Adrenaline Zone</h4>
+                </div>
+                <div class="panel-body">
+                    <p>Burn up the tracks with the fastest 3D racing action! The real car experience with true-to-life automotive journey 
+                    featuring 8 different laps in McLaren the sportiest & racing car in the world!</p>
+                    <p>Race as much as you can… achieve all the goals before finishing the lap; experience unique real car racing physics 
+                    on amazing 3D graphical environment.
+                    Discover an almost-real car fast action adventure in the virtual 3d classic racing game for android! Download it for 
+                    free... right now!! And start the thrilling race! Race anywhere, anytime; and experience the feel of a real sports car 
+                    control. Complete the lap in your best time to extend game while your enjoy the sunny day with beautiful sights on a 
+                    real looking road track. Your craze will be increased with 3d hurdles and real effects.</p>
+                    <% if user_signed_in? %>
+                        <a href="zones/4/bookings" class="btn btn-primary">Book Now</a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <h4><i class="fa fa-fw fa-space-shuttle"></i> Space Zone</h4>
+                </div>
+                <div class="panel-body">
+                    <p>In an alternate timeline to ours, where the Kennedy assassination failed and the internet was never invented, the 
+                    space race continued to boom as the soviet and US programs combined their efforts to conquer the vast mineral rich 
+                    expanse beyond Earth. Handing their findings over to private companies, governments gave way to mega corporations who 
+                    would soon establish mining & research colonies all over the Solar System. Owned by one such conglomerate, Station M 
+                    is a recently built research base of ORE Industries on the Saturn’s largest moon Titan.</p>
+                    <p>Just ahead of the announcement of a remarkable discovery however, a member of the research team mysteriously 
+                    disappears. As a reserve employee of RAMA, you are sent to the windswept surface of Titan to investigate…</p>
+                    <% if user_signed_in? %>
+                        <a href="zones/5/bookings" class="btn btn-primary">Book Now</a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+    <% if user_signed_in? %>
+        <!-- Call to Action Section -->
+        <div class="well">
+            <div class="row">
+                <div class="col-md-8 text-center">
+                    <p>Want to save money and avail of our membership bundles?   We offer monthly packages that will give you access
+                    to our game pods, our bars and the restaurant.</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-lg btn-primary btn-block" href="/pages/pricing">Save Money Here</a>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+</div>
+<!-- /.container -->
+
+<!-- Script to Activate the Carousel -->
+<script>
+$(document).on('ready', function () {
+  $('.carousel').carousel({
+      interval: 5000 //changes the speed
+  })
+});
+</script>

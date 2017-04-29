@@ -1,0 +1,45 @@
+<%= simple_form_for([@zone, @booking]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs style="margin 0 15% 0 15%"">
+    <%= f.input :timeslot, :collection => %w[09:00-10:00 10:00-11:00 11:00-12:00 12:00-13:00 13:00-14:00 14:00-15:00 15:00-16:00 16:00-17:00 17:00-18:00 18:00-19:00 19:00-20:00 20:00-21:00 21:00-22:00 22:00-23:00 23:00-00:00] %>
+    <br>
+
+    <table class="table table-bordered table-striped">
+      <td>
+        <div class="field">
+          Bar Voucher @ €2:
+          <%= check_box_tag 'booking[bar]', 'bar' %>
+        </div>
+      </td>
+      <td
+        <div class="field">
+          Restaurant Voucher @ €4:
+          <%= check_box_tag 'booking[restaurant]', 'restaurant' %>
+        </div>
+      </td>  
+      <td>
+          <div class="field">
+          Super Duper Headset @ €1:
+          <%= check_box_tag 'booking[headset]', 'headset' %>
+        </div>
+      </td>
+    </table>
+
+    <%= f.input :date, wrapper_html: {id: "date-input"} do %>
+      <span class="input-group-addon">
+      <%= f.input_field :date, as: :string, class: "form-control" %>
+      <i class="fa fa-calendar"></i></span>
+    <% end %>
+    <br><br>
+    <% if current_user.try(:admin?) %>
+    <% else %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% end %>
+    <%= f.hidden_field :price, :value => 20 %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
