@@ -1,27 +1,27 @@
-<%= simple_form_for([@zone, @booking]) do |f| %>
+<%= simple_form_for([@user, @booking]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs style="margin 0 15% 0 15%"">
-    <%= f.input :timeslot, :collection => %w[09:00-10:00 10:00-11:00 11:00-12:00 12:00-13:00 13:00-14:00 14:00-15:00 15:00-16:00 16:00-17:00 17:00-18:00 18:00-19:00 19:00-20:00 20:00-21:00 21:00-22:00 22:00-23:00 23:00-00:00] %>
+    <%= f.input :timeslot, :collection => %w[18:00-22:00 19:00-23:00 20:00-00:00] %>
     <br>
 
     <table class="table table-bordered table-striped">
       <td>
         <div class="field">
-          Bar Voucher @ €2:
-          <%= check_box_tag 'booking[bar]', 'bar' %>
+          Start 1 hour earlier @ extra €15:
+          <%= check_box_tag 'booking[h1xe]', '1xe' %>
         </div>
       </td>
       <td
         <div class="field">
-          Restaurant Voucher @ €4:
-          <%= check_box_tag 'booking[restaurant]', 'restaurant' %>
+          Start 2 hours earlier @ extra €30:
+          <%= check_box_tag 'booking[h2xe]', '2xe' %>
         </div>
       </td>  
       <td>
           <div class="field">
-          Super Duper Headset @ €1:
-          <%= check_box_tag 'booking[headset]', 'headset' %>
+          End 1 hour later @ extra €20:
+          <%= check_box_tag 'booking[h1xl]', '1xl' %>
         </div>
       </td>
     </table>
@@ -36,7 +36,8 @@
     <% else %>
       <%= f.hidden_field :user_id, :value => current_user.id %>
     <% end %>
-    <%= f.hidden_field :price, :value => 20 %>
+    <%= f.hidden_field :price, :value => 45 %>
+    <%= f.hidden_field :zone_id, :value => current_user.id %>
   </div>
 
   <div class="form-actions">

@@ -1,0 +1,14 @@
+<%= simple_form_for([@booking, @rating]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :stars %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+  <%= f.hidden_field :client, :value => @booking.zone_id %>
+  <%= f.hidden_field :sitter, :value => @booking.user_id %>
+  <%= hidden_field_tag @booking.update_attributes(:rated => true) %>
+<% end %>

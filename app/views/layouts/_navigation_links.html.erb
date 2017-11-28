@@ -1,9 +1,13 @@
 <%# add navigation links to this file %>
 <li><%= link_to 'About', page_path('about') %></li>
 <% if user_signed_in? %>
-    <% if current_user.try(:vip?) || current_user.try(:admin?) %>
+    <% if current_user.try(:admin?) %>
         <li>
-            <%= link_to 'VIP Lounge', page_path('vip_lounge') %>
+            <li><%= link_to 'Users', users_path %></li>
+        </li>
+    <% end %>
+    <% if current_user.try(:client?) %>
+            <li><%= link_to 'Sitters', users_path %></li>>
         </li>
     <% end %>
 <% end %>
@@ -11,5 +15,5 @@
     <%= link_to 'Contact', page_path('contact') %>
 </li>
 <li>
-    <%= link_to 'Membership Offers', page_path('pricing') %>
+    <%= link_to 'FAQ', page_path('faq') %>
 </li>

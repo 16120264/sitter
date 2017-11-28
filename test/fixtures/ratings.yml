@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stars: 1
+  client: 1
+  sitter: 1
+  booking_id: 
+
+two:
+  stars: 1
+  client: 1
+  sitter: 1
+  booking_id: 

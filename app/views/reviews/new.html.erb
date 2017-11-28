@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-lg-12" >
+            <h1 class="page-header text-center">New review for <%= User.where(:id => @booking.zone_id).pluck(:name).first %> 
+                <small>honesty killed the cat</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><%= link_to 'Home', root_path %></li>
+                <li class="active">New Review by <%= current_user.name %></li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- /.row -->
+    <div style="margin-left:5%">
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <%= render 'form' %>
+            </tr>
+
+        </table>
+
+    </div>
+    <br><br>
+    <ol class="breadcrumb">
+        <li><%= link_to 'Home', root_path %>
+    </ol>
+</div>

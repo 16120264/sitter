@@ -10,5 +10,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
+  
+  def current_user_id
+    return unless session[:user_id]
+    @current_user_id ||= User.find(session[:user_id])
+  end
 
 end

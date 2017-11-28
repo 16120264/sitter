@@ -6,12 +6,16 @@
     <div class="row">
         <div class="col-lg-12" >
             <h1 class="page-header text-center">All your bookings in one place 
-                <small>can't wait to see you</small>
+                <small>looking after you well</small>
             </h1>
             <ol class="breadcrumb">
                 <li><%= link_to 'Home', root_path %>
                 </li>
-                <li class="active">Bookings for <%= current_user.name %></li>
+                <% if current_user.try(:admin?) %>
+                    <li class="active">Bookings for all Clients </li>
+                <% else %>
+                    <li class="active">Bookings for <%= current_user.name %></li>
+                <% end %> 
             </ol>
         </div>
     </div>
@@ -21,38 +25,57 @@
         
         <table class="table table-bordered table-striped">
             <tr>
-                <th>Zone</th>                
-                <th>Arrival Date</th>
+                <% if (current_user.try(:sitter?) || current_user.try(:admin?)) %>
+                    <th>Client</th>  
+                <% end %>
+                <% if (current_user.try(:client?) || current_user.try(:admin?)) %>
+                    <th>Sitter</th>  
+                <% end %>           
+                <th>Booking Date</th>
                 <th>Time Slot</th> 
                 <th>Price in €</th>
                 <th>Add Ons</th>
-                <% if current_user.try(:admin?) %>
-                    <th>User Number</th>
-                <% end %>  
-                <th>Edit</th>
-                <th>Remove</th>
             </tr>
           	<% for booking in Booking.all.order("date ASC") %>
-	            <% for zone in Zone.all %>
-	                <tr>
-	                    <% if (booking.user_id == current_user.id || current_user.try(:admin?)) %>
-		                    <td><strong><%= zone.name %></strong></td>
-		                    <td><%= booking.date %></td>
-		                    <td><%= booking.timeslot %></td>	                    
-	                        <td><%= booking.price %></td>
-	                        <td><%= booking.add_on %></td>
-	                    <% end %>
-	                    <% if current_user.try(:admin?) %>
-	                        <td><%= booking.user_id %></td>
-	                    <% end %>
-	                    
-	                    <% if (booking.user_id == current_user.id || current_user.try(:admin?)) && booking.date >= Date.today %>
-	                        <td><%= link_to ' Edit ', edit_zone_booking_path(Zone.all, booking), :class => 'btn btn-warning' %></td> 
-	                        <td><%= link_to ' Remove ', zone_booking_path(Zone.all, booking), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
-	                    <% end %>
-	                </tr>
+	            <% for user in User.where(id: current_user.id) %>
+	                <% if (booking.user_id == current_user.id || booking.zone_id == current_user.id || current_user.try(:admin?)) %>
+                        <tr>
+                            <% if (current_user.try(:sitter?) || current_user.try(:admin?)) %>
+                                <td class="text-center"><%= User.where(:id => booking.zone_id).pluck(:name).first %></td>
+                            <% end %>                            
+                            <% if (current_user.try(:client?) || current_user.try(:admin?)) %>
+                                <td class="text-center"><%= User.where(:id => booking.user_id).pluck(:name).first %></td>
+                            <% end %>  
+        	                <td class="text-center"><%= booking.date %></td>
+        	                <td class="text-center"><%= booking.timeslot %></td>	                    
+                            <td class="text-center"><%= booking.price %></td>
+                            <td class="text-center"><%= booking.add_on %></td>
+                            <% if booking.confirmed == false && (current_user.try(:sitter?) || current_user.try(:admin?)) %>
+                                <td class="text-center"><%= link_to link_to "Confirm Booking", update_confirmed_booking_path(booking), method: :patch, :class => 'btn btn-warning' %></td>
+                            <% else %>
+                                <% if booking.confirmed == false %>
+                                    <td class="text-center"><%= submit_tag 'Not Confirmed',  :type => 'button', :class => 'btn btn-warning' %></td>
+                                <% end %>
+                                <% if booking.confirmed == true  %>
+                                    <td class="text-center"><%= submit_tag 'Confirmed',  :type => 'button', :class => 'btn btn-success' %></td>
+                                <% end %>
+                            <% end %>  
+                            <% if (current_user.try(:sitter?) || current_user.try(:admin?)) %>
+                                <td class="text-center"><a href="/bookings/<%= booking.id %>/reviews" class="btn btn-primary">Client Reviews</a></td>
+                            <% end %> 
+                            <% if (current_user.try(:client?) || current_user.try(:admin?)) %>
+                                <td class="text-center"><a href="/bookings/<%= booking.id %>/ratings" class="btn btn-primary">Sitter Rating</a></td>
+                            <% end %>                             
+                            <% if (booking.confirmed == false ) && booking.date > Date.today %>
+                                <td class="text-center"><%= link_to ' Delete ', user_booking_path(User.all, booking), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+                            <% end %>
+                            <% if (booking.confirmed == true ) && current_user.try(:admin?) && booking.date > Date.today %>
+                                <td class="text-center"><%= link_to ' Delete ', user_booking_path(User.all, booking), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %></td>
+                            <% end %>                            
+                        </tr>
+                    <% end %>
 	            <% end %>
-	        <% end %>    
+	        <% end %> 
         </table>        
     
     </div>

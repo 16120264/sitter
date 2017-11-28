@@ -6,7 +6,7 @@
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header text-center">Bookings for <%= @zone.name %>
+            <h1 class="page-header text-center">Bookings for <%= @user.name %>
                 <small>bet you can't wait !</small>
             </h1>
             <ol class="breadcrumb">
@@ -21,14 +21,18 @@
         
         <p>
             <b> Booking details:</b>
-            <%= @booking.date %>
-            <%= @booking.timeslot %>
+            <% if (@booking.user_id == current_user.id) %>
+                <%= @booking.date %>
+                <%= @booking.timeslot %>
+                <%= @booking.price %>
+                <%= @booking.add_on %>   
+            <% end %>
         </p>
 
     </div>
     <br><br>
     <ol class="breadcrumb">
-        <li><%= link_to 'Edit', edit_zone_booking_path(@zone, @booking) %></li>
-        <li><%= link_to 'Back', zone_bookings_path(@zone) %></li>
+        <li><%= link_to 'Edit', edit_user_booking_path(@user, @booking) %></li>
+        <li><%= link_to 'Back', user_bookings_path(@user) %></li>
     </ol>    
 </div>

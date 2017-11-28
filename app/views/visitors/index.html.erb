@@ -10,21 +10,21 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-            <div class="fill" style="background-image:url('https://www.ccpgames.com/4iarfuccmw16/6l8Nbr9fNKoyW0YUksuyAu/2e7d17fd8e8923f9c1d4a38de897127a/HighresScreenshot000038f97.jpg?fit=fill&w=1920');"></div>
+            <div class="fill" style="background-image:url('http://www.executivebabysitting.com.au/images/girls.png');"></div>
             <div class="carousel-caption">
-                <h2>Space Zone</h2>
+                <h2>All ages catered for</h2>
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image:url('http://www.jurassicworlduniverse.com/wordpress/wp-content/uploads/2014/11/still006.jpg');"></div>
+            <div class="fill" style="background-image:url('http://www.abrabrighton.com/wp-content/uploads/2015/10/Babysitting_64817762.jpg');"></div>
             <div class="carousel-caption">
-                <h2>Jurassic Zone</h2>
+                <h2>We lend a hand</h2>
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image:url('http://www.automobilesreview.com/gallery/bmw-vision-gran-turismo/bmw-vision-gran-turismo-01.jpg');"></div>
+            <div class="fill" style="background-image:url('http://www.apa.org/Images/discrimination-kids2-title-image_tcm7-198551.jpg');"></div>
             <div class="carousel-caption">
-                <h2>Adrenaline Zone</h2>
+                <h2>We support Equality</h2>
             </div>
         </div>
     </div>
@@ -45,25 +45,21 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header text-center">
-                <strong>TYROS</strong> The Virtual Reality Arcade of your Dreams
+                <strong>SITTERS</strong> Not the babysitter you want, the babysitter you NEED
             </h1>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <h4><i class="fa fa-fw fa-fax text-center"></i> Jurassic Zone</h4>
+                    <h4><i class="fa fa-fw fa-child  text-center"></i> All ages catered for</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Have you ever wanted to meet Dinosaurs in real life? Experience the ultimate dino ride with Jurassic Virtual 
-                    Reality (VR)</p>
-                    <p>This is your chance to have the ultimate Jurassic experience without the long flights or the time travel.</p>
-                    <p> Learn more about the history of dinosaurs and stand in awe as you explore a rich virtual reality world filled 
-                    with insidious 3d details. Explore the island’s Jurassic shores and dense jungle and learn about this chapter in 
-                    history. Safely observe the deadly creatures as they prowl their natural habitat. Hunt for your favourite creature 
-                    on the vast plains and secluded mountain ranges. The app includes many breed of dinosaurs; from hunting carnivores 
-                    like the towering T-Rex to smaller mini specimens such as the Dilophosaurus.</p>
+                    <p>We cater for all ages, from new-borns to nervous teenagers! Our sitters are in it for the love of it (mostly anyway!) 
+                    If you have a special needs child we do our best to ensure that we can source a sitter that understands the requirements.</p> 
+                    <p>Please make any special needs known in your initial request. We have experienced sitters, and a number of sitters with siblings 
+                    with special needs.</p>
                     <% if user_signed_in? %>
-                        <a href="zones/1/bookings" class="btn btn-primary">Book Now</a>
+                        <%= link_to 'Book Now', users_path, :class => 'btn btn-primary' %>
                     <% end %>
                 </div>
             </div>
@@ -71,19 +67,14 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <h4><i class="fa fa-fw fa-car text-center"></i> Adrenaline Zone</h4>
+                    <h4><i class="fa fa-fw fa-thumbs-up text-center"></i> We lend a hand</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Burn up the tracks with the fastest 3D racing action! The real car experience with true-to-life automotive journey 
-                    featuring 8 different laps in McLaren the sportiest & racing car in the world!</p>
-                    <p>Race as much as you can… achieve all the goals before finishing the lap; experience unique real car racing physics 
-                    on amazing 3D graphical environment.
-                    Discover an almost-real car fast action adventure in the virtual 3d classic racing game for android! Download it for 
-                    free... right now!! And start the thrilling race! Race anywhere, anytime; and experience the feel of a real sports car 
-                    control. Complete the lap in your best time to extend game while your enjoy the sunny day with beautiful sights on a 
-                    real looking road track. Your craze will be increased with 3d hurdles and real effects.</p>
+                    <p>It's hard being a parent in the modern world. There is hardly a moment to catch your breath, at work or at home. When the chance 
+                    to grab some quality time with your significant other comes along, grab it with both hands.</p>  <p>You love you kids dearly, but a 
+                    relaxed parent is a better parent.  Take the time out and let us manage things on the home front for an evening for you.</p>
                     <% if user_signed_in? %>
-                        <a href="zones/2/bookings" class="btn btn-primary">Book Now</a>
+                        <%= link_to 'Book Now', users_path, :class => 'btn btn-primary' %>
                     <% end %>
                 </div>
             </div>
@@ -91,18 +82,15 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
-                    <h4><i class="fa fa-fw fa-space-shuttle"></i> Space Zone</h4>
+                    <h4><i class="fa fa-fw fa-group"></i> We support Equality</h4>
                 </div>
                 <div class="panel-body">
-                    <p>In an alternate timeline to ours, where the Kennedy assassination failed and the internet was never invented, the 
-                    space race continued to boom as the soviet and US programs combined their efforts to conquer the vast mineral rich 
-                    expanse beyond Earth. Handing their findings over to private companies, governments gave way to mega corporations who 
-                    would soon establish mining & research colonies all over the Solar System. Owned by one such conglomerate, Station M 
-                    is a recently built research base of ORE Industries on the Saturn’s largest moon Titan.</p>
-                    <p>Just ahead of the announcement of a remarkable discovery however, a member of the research team mysteriously 
-                    disappears. As a reserve employee of RAMA, you are sent to the windswept surface of Titan to investigate…</p>
+                    <p>It is a mixed up world, and it is hard to find your place in it.  Discrimination is no longer seen as an issue, but it will only 
+                    remain a free world as long as we fight to keep it free.  We are determined to do our bit.</p> <p>We embrace all people, however 
+                    they identify and whatever relationship model they choose.  Our only concern is the safety and wellbeing of our minders and your children.
+                    </p>
                     <% if user_signed_in? %>
-                        <a href="zones/3/bookings" class="btn btn-primary">Book Now</a>
+                        <%= link_to 'Book Now', users_path, :class => 'btn btn-primary' %>
                     <% end %>
                 </div>
             </div>
@@ -110,21 +98,6 @@
     </div>
     <!-- /.row -->
 
-    <hr>
-    <% if user_signed_in? %>
-        <!-- Call to Action Section -->
-        <div class="well">
-            <div class="row">
-                <div class="col-md-8 text-center">
-                    <p>Want to save money and avail of our membership bundles?   We offer monthly packages that will give you access
-                    to our game pods, our bars and the restaurant.</p>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-lg btn-primary btn-block" href="/pages/pricing">Save Money Here</a>
-                </div>
-            </div>
-        </div>
-    <% end %>
 
 </div>
 <!-- /.container -->
